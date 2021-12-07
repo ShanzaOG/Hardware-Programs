@@ -22,20 +22,24 @@ Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
 S:\OGUDE\STM\BLUEPILL\Blink\Test1.uvprojx
-Project File Date:  11/26/2021
+Project File Date:  12/06/2021
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.16', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-main.c(14): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-        GPIOC->CRH &= ~((1<<22)|(1<<23));//output at 50 MHZ
-                   ~~ ^~~~~~~~~~~~~~~~~~
-1 warning generated.
+main.c(2): warning: In file included from...
+./HAL_GPIO.h(78): warning: unused function 'config_pin' [-Wunused-function]
+static void config_pin (GPIO_TypeDef *port, uint32_t pinNumber, uint32_t mode_type);
+            ^
+./HAL_GPIO.h(79): warning: unused function 'config_pin_speed' [-Wunused-function]
+static void config_pin_speed (GPIO_TypeDef *port, uint32_t pinNumber, uint32_t mode, uint32_t pinSpeed);
+            ^
+2 warnings generated.
 compiling main.c...
 linking...
-Program Size: Code=716 RO-data=252 RW-data=0 ZI-data=1632  
+Program Size: Code=1256 RO-data=316 RW-data=0 ZI-data=1632  
 FromELF: creating hex file...
-".\Objects\Test1.axf" - 0 Error(s), 1 Warning(s).
+".\Objects\Test1.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -62,11 +66,11 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.5.0
 
    * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device\Source\ARM\startup_stm32f10x_md.s
-      Source file:   Device\Source\system_stm32f10x.c
       Include file:  RTE_Driver\Config\RTE_Device.h
+      Source file:   Device\Source\system_stm32f10x.c
       Source file:   Device\Source\ARM\STM32F1xx_OPT.s
-Build Time Elapsed:  00:00:06
+      Source file:   Device\Source\ARM\startup_stm32f10x_md.s
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

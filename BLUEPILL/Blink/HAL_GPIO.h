@@ -2,6 +2,8 @@
 #define HAL_GPIO
 
 #include "stm32f10x.h"
+#define LOW 0
+#define HIGH 1 
 
 //PORTS
 #define PORTA    GPIOA
@@ -24,14 +26,14 @@
 #define INPUT_Floating  ((uint32_t) 0x01)//Floating input(reset state)
 #define INPUT_PU_PD     ((uint32_t) 0x02)//Input with pull-up/pull-down
 
-//OUTPUT MODE TYPES
+//OUTPUT MODE_TYPES
 #define OUTPUT_GPOPP    ((uint32_t) 0x00)//General purpose output push-pull
 #define OUTPUT_GPOOD    ((uint32_t) 0x01)//General purpose output Open-drain
 #define OUTPUT_ALT_PP   ((uint32_t) 0x02)//Alternate function output push-pull
 #define OUTPUT_ALT_OD   ((uint32_t) 0x03)//Alternate function output open-drain
 
 /*MODEy[1:0]*/
-//PIN Speeds
+//PIN Speeds/Slew rate 
 #define SPEED_2MHZ  ((uint32_t) 0x02)//Output mode max speed 2 MHZ
 #define SPEED_10MHZ ((uint32_t) 0x01)//Output mode max speed 10 MHZ
 #define SPEED_50MHZ ((uint32_t) 0x03)//Output mode max speed 50 MHZ
@@ -69,25 +71,17 @@ typedef struct
 }GPIO_TYPE; 
 
 
-//Functions
+//---------------FUNCTIONS-------------------
 //*******************************************
 //         GPIO CONFIGURATION
 
 static void config_pin (GPIO_TypeDef *port, uint32_t pinNumber, uint32_t mode_type);
 static void config_pin_speed (GPIO_TypeDef *port, uint32_t pinNumber, uint32_t mode, uint32_t pinSpeed);
 
- 
-
-
-
-
-
-
-
-
-
-
-
+//         GPIO USER PIN FUNCTIONS
+void gpio_write(GPIO_TypeDef *port, uint32_t pinNumber, uint8_t state);
+void gpio_toggle(GPIO_TypeDef *port, uint32_t pinNumber);
+void gpio_init(GPIO_TYPE gpio_type);
 
 
 
@@ -101,3 +95,4 @@ static void config_pin_speed (GPIO_TypeDef *port, uint32_t pinNumber, uint32_t m
 
  
 #endif
+
